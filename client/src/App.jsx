@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-
 import HomePage from "./pages/HomePage.jsx";
 import ViewProductPage from "./pages/ViewProductPage.jsx";
+import { createContext } from "react";
+export const UserContext = createContext();
 
 function App() {
   const userData = {
@@ -12,6 +13,7 @@ function App() {
   };
 
   return (
+    <UserContext.Provider value={userData}>
     <div className="App">
       <Router>
         <Routes>
@@ -20,6 +22,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    </UserContext.Provider>
   );
 }
 

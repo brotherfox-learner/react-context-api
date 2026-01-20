@@ -1,22 +1,31 @@
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { UserContext } from "../App";
+import products from "../data/products.js";
 function ViewProductPage() {
   const navigate = useNavigate();
+  const user = useContext(UserContext);
   return (
-    <div>
-      <h1>View Product Page</h1>
-      <div className="view-product-container">
-        <h2>Product Title</h2>
-        <p>Content</p>
-      </div>
+    <section>
+      {products.map((product) => (
+        <article key={product.id}>
+          <h1>View Product Page</h1>
+          <div className="view-product-container">
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+          </div>
 
-      <div className="product-promotion-box">
-        <h2>คุณคือสมาชิกในระดับ (x) ดังนั้นคุณได้สิทธิพิเศษลด 50%</h2>
-        <button onClick={() => alert("🥳🥳🥳🥳")}>กดรับสิทธิ</button>
-      </div>
+          <div className="product-promotion-box">
+            <h2>
+              คุณคือสมาชิกในระดับ {user.level} ดังนั้นคุณได้สิทธิพิเศษลด 50%
+            </h2>
+            <button onClick={() => alert("🥳🥳🥳🥳")}>กดรับสิทธิ</button>
+          </div>
 
-      <button onClick={() => navigate("/")}>Back to Home</button>
-    </div>
+          <button onClick={() => navigate("/")}>Back to Home</button>
+        </article>
+      ))}
+    </section>
   );
 }
 
