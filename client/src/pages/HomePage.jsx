@@ -4,6 +4,7 @@ import products from "../data/products.js";
 
 function HomePage() {
   const navigate = useNavigate();
+
   return (
     <div>
       <div className="app-wrapper">
