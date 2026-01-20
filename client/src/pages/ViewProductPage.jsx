@@ -4,7 +4,7 @@ import { UserContext } from "../App";
 import products from "../data/products.js";
 function ViewProductPage() {
   const navigate = useNavigate();
-  const user = useContext(UserContext);
+  const {level} = useContext(UserContext);
   return (
     <section>
       {products.map((product) => (
@@ -17,7 +17,7 @@ function ViewProductPage() {
 
           <div className="product-promotion-box">
             <h2>
-              คุณคือสมาชิกในระดับ {user.level} ดังนั้นคุณได้สิทธิพิเศษลด 50%
+              คุณคือสมาชิกในระดับ {level} ดังนั้นคุณได้สิทธิพิเศษลด 50%
             </h2>
             <button onClick={() => alert("🥳🥳🥳🥳")}>กดรับสิทธิ</button>
           </div>
